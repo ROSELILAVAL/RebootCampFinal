@@ -1,8 +1,11 @@
 export type TranslationKeys = {
-    heroTitle: string;
-    heroSubtitle: string;
-    heroCta: string;
-    heroSecondaryCta: string;
+    landingTitle: string;
+    landingSubtitle: string;
+    landingCta: string;
+    landingSecondaryCta: string;
+
+
+    
     programming: string;
     camps: string;
     calendar: string;
@@ -190,6 +193,9 @@ export type TranslationKeys = {
     campflStudioDescription:string;
     campBureautiqueTitle:string;
     campBureautiqueDescription:string;
+
+    notFoundMessage:string;
+    returnToHome:string;
 
     tarifPageTitle: string;
     tarifPageSubTitle: string;

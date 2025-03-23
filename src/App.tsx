@@ -5,7 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import Index from "./pages/Index";
+import Landing from "./pages/Landing";
 import Tarifs from "./pages/Tarifs";
 import Camps from "./pages/Camps";
 import Calendrier from "./pages/Calendrier";
@@ -48,7 +48,7 @@ const App = () => (
         <LanguageInitializer />
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/tarifs" element={<Tarifs />} />
           <Route path="/stages" element={<Camps />} />
           <Route path="/calendrier" element={<Calendrier />} />

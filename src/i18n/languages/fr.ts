@@ -1,10 +1,14 @@
 import { TranslationKeys } from "./type";
 
 const fr: TranslationKeys = {
-    heroTitle: "Apprendre le code en s'amusant",
-    heroSubtitle: "Des ateliers ludiques pour que vos enfants maîtrisent la technologie",
-    heroCta: "Découvrir nos stages",
-    heroSecondaryCta: "En savoir plus",
+    landingTitle: "Apprendre le code en s'amusant",
+    landingSubtitle: "Des ateliers ludiques pour que vos enfants maîtrisent la technologie",
+    landingCta: "Découvrir nos stages",
+    landingSecondaryCta: "En savoir plus",
+
+
+
+    
     programming: "Programmation adaptée",
     camps: "Cours flexibles",
     calendar: "Apprentissage ludique",
@@ -191,6 +195,9 @@ const fr: TranslationKeys = {
     campflStudioDescription: "Création de musique et de sons à l'aide du logiciel FL studio",
     campBureautiqueTitle:"bureautique",
     campBureautiqueDescription:"Venez apprendre à vous servir d'un ordinateur",
+
+    notFoundMessage:"Oops! Cette page a disparu dans le cyberespace.",
+    returnToHome:"Retour à l'accueil",
 
     viewCamps: "Voir nos stages",
     tarifPageTitle: "Nos tarifs",

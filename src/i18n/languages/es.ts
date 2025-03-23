@@ -1,10 +1,13 @@
 import { TranslationKeys } from "./type";
 
 const es: TranslationKeys = {
-    heroTitle: "Aprende a programar divirtiéndote",
-    heroSubtitle: "Talleres lúdicos para que tus hijos dominen la tecnología",
-    heroCta: "Descubrir nuestros campamentos",
-    heroSecondaryCta: "Más información",
+    landingTitle: "Aprende a programar divirtiéndote",
+    landingSubtitle: "Talleres lúdicos para que tus hijos dominen la tecnología",
+    landingCta: "Descubrir nuestros campamentos",
+    landingSecondaryCta: "Más información",
+
+
+    
     programming: "Programación adaptada",
     camps: "Cursos flexibles",
     calendar: "Aprendizaje lúdico",
@@ -191,6 +194,9 @@ const es: TranslationKeys = {
     campflStudioDescription: "Crea música y sonidos utilizando el software FL Studio", 
     campBureautiqueTitle:"Ofimática",
     campBureautiqueDescription:"Ven a aprender a usar una computadora.",
+
+    notFoundMessage:"Ups ! Esta página ha desaparecido en el ciberespacio.",
+    returnToHome:"Volver al inicio",
 
     tarifPageTitle: "Nuestros precios",
     tarifPageSubTitle: "Opciones adaptadas a todas las necesidades y horarios",

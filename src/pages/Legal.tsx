@@ -2,14 +2,10 @@
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { useLanguageStore } from '@/i18n';
-import { useTranslation } from '@/i18n/translations';
 import { Shield, FileText, Info, Mail } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 
 const Legal = () => {
-  const { language } = useLanguageStore();
-  const t = useTranslation(language);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -35,13 +31,11 @@ const Legal = () => {
             
             <div className="space-y-4 text-gray-700">
               <p><strong>Raison sociale :</strong> Rebootcamp SAS</p>
-              <p><strong>Capital social :</strong> 10 000 €</p>
-              <p><strong>SIRET :</strong> 123 456 789 00012</p>
-              <p><strong>RCS :</strong> Paris B 123 456 789</p>
-              <p><strong>Siège social :</strong> 123 Avenue de la Tech, 75001 Paris, France</p>
-              <p><strong>Téléphone :</strong> +33 1 23 45 67 89</p>
+              <p><strong>Capital social :</strong> 1 000 €</p>
+              <p><strong>SIRET :</strong> 931 633 028 00010</p>
+              <p><strong>RCS :</strong> 931 633 028 R.C.S. Nice</p>
+              <p><strong>Téléphone :</strong> +33 6 04 48 08 16</p>
               <p><strong>Email :</strong> contact@rebootcamp.fr</p>
-              <p><strong>Directeur de la publication :</strong> Jean Dupont</p>
             </div>
           </section>
           
@@ -116,7 +110,7 @@ const Legal = () => {
               </ul>
               
               <p className="mt-4">
-                Pour exercer ces droits, vous pouvez nous contacter à l'adresse suivante : <a href="mailto:privacy@rebootcamp.fr" className="text-reboot-blue hover:underline">privacy@rebootcamp.fr</a>
+                Pour exercer ces droits, vous pouvez nous contacter à l'adresse suivante : <a href="mailto:contact@rebootcamp.fr" className="text-reboot-blue hover:underline">contact@rebootcamp.fr</a>
               </p>
             </div>
           </section>
@@ -138,8 +132,7 @@ const Legal = () => {
               <h3 className="text-xl font-semibold mt-4">Types de cookies utilisés</h3>
               <ul className="list-disc pl-5 space-y-1">
                 <li><strong>Cookies techniques :</strong> nécessaires au bon fonctionnement du site</li>
-                <li><strong>Cookies analytiques :</strong> permettent de mesurer l'audience du site</li>
-                <li><strong>Cookies de personnalisation :</strong> permettent d'adapter le contenu à vos préférences</li>
+                {/* <li><strong>Cookies analytiques :</strong> permettent de mesurer l'audience du site</li> */}
               </ul>
               
               <h3 className="text-xl font-semibold mt-4">Gestion des cookies</h3>
@@ -186,7 +179,7 @@ const Legal = () => {
               </p>
               
               <p>
-                Dernière mise à jour : 1er mai 2024
+                Dernière mise à jour : 1er mars 2025
               </p>
             </div>
           </section>
@@ -199,7 +192,7 @@ const Legal = () => {
             </div>
             
             <p className="text-gray-700">
-              Pour toute question concernant ces mentions légales, veuillez nous contacter à <a href="mailto:legal@rebootcamp.fr" className="text-reboot-blue hover:underline">legal@rebootcamp.fr</a>
+              Pour toute question concernant ces mentions légales, veuillez nous contacter à <a href="mailto:contact@rebootcamp.fr" className="text-reboot-blue hover:underline">contact@rebootcamp.fr</a>
             </p>
           </section>
         </div>

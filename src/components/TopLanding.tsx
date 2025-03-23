@@ -5,17 +5,12 @@ import { Button } from '@/components/ui/button';
 import { ChevronRight, Sparkles } from 'lucide-react';
 import RobotMascot from './RobotMascot';
 import { cn } from '@/lib/utils';
-import { useLanguageStore, Language } from '@/i18n';
+import { useLanguageStore } from '@/i18n';
 import { useTranslation } from '@/i18n/translations';
 
-type HeroSectionProps = {
-  language?: Language;
-};
-
-const HeroSection: React.FC<HeroSectionProps> = ({ language: langProp }) => {
+const TopLanding = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { language: langStore } = useLanguageStore();
-  const language = langProp || langStore;
+  const { language } = useLanguageStore();
   const t = useTranslation(language);
 
   useEffect(() => {
@@ -56,25 +51,25 @@ const HeroSection: React.FC<HeroSectionProps> = ({ language: langProp }) => {
           )}
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-balance bg-gradient-to-br from-reboot-blue via-purple-600 to-reboot-coral bg-clip-text text-transparent">
-            {t.heroTitle}
+            {t.landingTitle}
           </h1>
           
           <p className="text-lg text-gray-700 mb-8 max-w-2xl text-balance">
-            {t.heroSubtitle}
+            {t.landingSubtitle}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">
             <Button asChild size="lg" className="rounded-full font-medium text-base bg-gradient-to-r from-reboot-blue to-purple-600 hover:from-reboot-blue/90 hover:to-purple-700 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-all">
               <Link to="/stages" className="flex items-center">
                 <Sparkles className="mr-2 h-5 w-5" />
-                {t.heroCta}
+                {t.landingCta}
                 <ChevronRight className="ml-1 h-5 w-5" />
               </Link>
             </Button>
             
             <Button variant="outline" size="lg" className="rounded-full border-reboot-blue/30 hover:bg-reboot-blue/5 transition-all duration-300">
               <Link to="#why-rebootcamp">
-                {t.heroSecondaryCta}
+                {t.landingSecondaryCta}
               </Link>
             </Button>
           </div>
@@ -108,4 +103,4 @@ const HeroSection: React.FC<HeroSectionProps> = ({ language: langProp }) => {
   );
 };
 
-export default HeroSection;
+export default TopLanding;

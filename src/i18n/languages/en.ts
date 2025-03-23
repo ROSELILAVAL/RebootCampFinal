@@ -1,10 +1,13 @@
 import { TranslationKeys } from "./type";
 
 const en: TranslationKeys = {
-    heroTitle: "Learn to code while having fun",
-    heroSubtitle: "Playful workshops for your children to master technology",
-    heroCta: "Discover our camps",
-    heroSecondaryCta: "Learn more",
+    landingTitle: "Learn to code while having fun",
+    landingSubtitle: "Playful workshops for your children to master technology",
+    landingCta: "Discover our camps",
+    landingSecondaryCta: "Learn more",
+
+
+    
     programming: "Adapted programming",
     camps: "Flexible courses",
     calendar: "Playful learning",
@@ -191,6 +194,9 @@ const en: TranslationKeys = {
     campflStudioDescription: "Create music and sounds using FL Studio software",  
     campBureautiqueTitle:"Office automation",
     campBureautiqueDescription:"Come learn how to use a computer",
+
+    notFoundMessage:"Oops! This page has disappeared into cyberspace.",
+    returnToHome:"Back to the homepage",
 
     tarifPageTitle: "Our pricing",
     tarifPageSubTitle: "Options tailored to all needs and schedules",
