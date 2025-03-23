@@ -33,7 +33,6 @@ const NotFound = () => {
             <Link to="/" className="flex items-center">
               <Home className="mr-2 h-5 w-5" />
               {t.returnToHome}
-              Retour à l'accueil
               <Sparkles className="ml-2 h-4 w-4" />
             </Link>
           </Button>
