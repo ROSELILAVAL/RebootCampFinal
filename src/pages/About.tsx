@@ -258,11 +258,6 @@ const About = () => {
                 {t.contactUsButton}
               </Link>
             </Button>
-            <Button asChild variant="outline" className="text-white border-white hover:bg-white/20">
-              <Link to="/calendrier">
-                {t.viewAvailableCamps}
-              </Link>
-            </Button>
           </div>
         </div>
       </section>

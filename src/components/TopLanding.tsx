@@ -68,7 +68,7 @@ const TopLanding = () => {
             </Button>
             
             <Button variant="outline" size="lg" className="rounded-full border-reboot-blue/30 hover:bg-reboot-blue/5 transition-all duration-300">
-              <Link to="#why-rebootcamp">
+              <Link to="about">
                 {t.landingSecondaryCta}
               </Link>
             </Button>

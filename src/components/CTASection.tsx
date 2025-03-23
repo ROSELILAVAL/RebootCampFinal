@@ -94,7 +94,7 @@ const CTASection: React.FC<CTASectionProps> = ({ language: langProp }) => {
               <Button asChild size="lg" className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-reboot-dark hover:from-yellow-500 hover:to-yellow-600 rounded-full shadow-lg shadow-yellow-600/20 hover:shadow-yellow-500/40 transition-all">
                 <Link to="/stages" className="flex items-center">
                   <PartyPopper className="mr-2 h-5 w-5" />
-                  {t.heroCta}
+                  {t.landingCta}
                   <ChevronRight className="ml-1 h-5 w-5" />
                 </Link>
               </Button>

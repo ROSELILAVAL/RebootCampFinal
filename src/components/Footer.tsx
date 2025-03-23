@@ -47,7 +47,7 @@ const Footer: React.FC<FooterProps> = ({ language: langProp }) => {
           {/* Robot Mascot (replacing Camps) */}
           <div className="flex flex-col items-center justify-center">
             <div className="animate-spin-slow relative h-40 w-40">
-              <RobotMascot className="absolute inset-0" />
+              <RobotMascot className="absolute inset-0" isBouncing={false} />
             </div>
           </div>
 

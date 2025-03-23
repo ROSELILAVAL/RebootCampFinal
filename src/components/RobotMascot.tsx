@@ -7,6 +7,7 @@ type RobotExpression = 'default' | 'happy' | 'curious' | 'excited';
 type RobotMascotProps = {
   className?: string;
   initialExpression?: RobotExpression;
+  isBouncing?: boolean;
 };
 
 const colorPalette = {
@@ -19,7 +20,8 @@ const colorPalette = {
 
 const RobotMascot: React.FC<RobotMascotProps> = ({ 
   className,
-  initialExpression = 'default' 
+  initialExpression = 'default' ,
+  isBouncing = true
 }) => {
   const [expression, setExpression] = useState<RobotExpression>(initialExpression);
   const [isHovered, setIsHovered] = useState(false);
@@ -38,12 +40,14 @@ const RobotMascot: React.FC<RobotMascotProps> = ({
 
   // Bouncing animation
   useEffect(() => {
-    const bounceInterval = setInterval(() => {
-      setBounce(true);
-      setTimeout(() => setBounce(false), 500);
-    }, 4000); // Regular bounce interval
-    
-    return () => clearInterval(bounceInterval);
+    if(isBouncing){
+      const bounceInterval = setInterval(() => {
+        setBounce(true);
+        setTimeout(() => setBounce(false), 500);
+      }, 4000); // Regular bounce interval
+      
+      return () => clearInterval(bounceInterval);
+    }
   }, []);
 
   // Change expression periodically
@@ -95,6 +99,7 @@ const RobotMascot: React.FC<RobotMascotProps> = ({
         isHovered ? "animate-pulse" : "",
         className
       )}
+      style={{marginTop: "40px"}}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
