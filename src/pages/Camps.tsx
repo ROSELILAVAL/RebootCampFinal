@@ -10,24 +10,17 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { useLanguageStore } from "@/i18n";
 import { useTranslation } from "@/i18n/translations";
-import { Camp, camps } from "@/data/camps";
+import { camps } from "@/data/camps";
 
-type AgeGroup = "7-9" | "10-12" | "13-15" | "16-18" | "all";
 
-const ageGroups: { value: AgeGroup; label: string }[] = [
-  { value: "all", label: "Tous" },
-  { value: "7-9", label: "7-9 ans" },
-  { value: "10-12", label: "10-12 ans" },
-  { value: "13-15", label: "13-15 ans" },
-  { value: "16-18", label: "16-18 ans" },
-];
+const ageGroups = ["all", "6_9", "10_12", "13_15", "16_18"];
 
 const Camps = () => {
   const { language } = useLanguageStore();
   const t = useTranslation(language);
 
   const [isVisible, setIsVisible] = useState(false);
-  const [filters, setFilters] = useState<{ ageGroup: AgeGroup; search: string }>({
+  const [filters, setFilters] = useState<{ ageGroup: string; search: string }>({
     ageGroup: "all",
     search: "",
   });
@@ -35,8 +28,8 @@ const Camps = () => {
   const filteredCamps = camps.filter((camp) => {
     const matchesAge =
       filters.ageGroup === "all" ||
-      (camp.ageMin <= parseInt(filters.ageGroup.split("-")[1]) &&
-        camp.ageMax >= parseInt(filters.ageGroup.split("-")[0]));
+      (camp.ageMin <= parseInt(filters.ageGroup.split("_")[1]) &&
+        camp.ageMax >= parseInt(filters.ageGroup.split("_")[0]));
 
     const matchesSearch =
       !filters.search ||
@@ -104,11 +97,11 @@ const Camps = () => {
                 </div>
 
                 {/* Age Filter Tabs */}
-                <Tabs value={filters.ageGroup} onValueChange={(value) => handleFilterChange("ageGroup", value as AgeGroup)}>
+                <Tabs value={filters.ageGroup} onValueChange={(value) => handleFilterChange("ageGroup", value)}>
                   <TabsList className="h-auto flex-wrap">
-                    {ageGroups.map(({ value, label }) => (
-                      <TabsTrigger key={value} value={value} className="px-3 py-1.5 text-sm">
-                        {t[`ageGroup_${value.replace("-", "_")}`] || label}
+                    {ageGroups.map((ageGroup) => (
+                      <TabsTrigger key={ageGroup} value={ageGroup} className="px-3 py-1.5 text-sm">
+                        {t[`ageGroup_${ageGroup}`]}
                       </TabsTrigger>
                     ))}
                   </TabsList>
@@ -122,7 +115,7 @@ const Camps = () => {
 
                   {filters.ageGroup !== "all" && (
                     <Badge variant="secondary" className="flex items-center gap-1">
-                      {t[`ageGroup_${filters.ageGroup.replace("-", "_")}`] || filters.ageGroup}
+                      {t[`ageGroup_${filters.ageGroup}`] || filters.ageGroup}
                       <button onClick={() => handleFilterChange("ageGroup", "all")}>
                         <X className="h-3 w-3" />
                       </button>

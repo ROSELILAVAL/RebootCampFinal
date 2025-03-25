@@ -42,7 +42,7 @@ const TopLanding = () => {
       {/* Playful SVG pattern background */}
       <div className="absolute inset-0 opacity-5 bg-bubbles" aria-hidden="true" />
 
-      <div className="container relative z-10 flex flex-col-reverse md:flex-row items-center">
+      <div className="max-w-[1250px!important] container relative z-10 flex flex-col-reverse md:flex-row items-center">
         {/* Content */}
         <div 
           className={cn(

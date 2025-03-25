@@ -123,7 +123,7 @@ const About = () => {
       </section>
       
       {/* Our Team */}
-      <section className="py-16 bg-white">
+      {/* <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className={cn(
             "max-w-4xl mx-auto transition-all duration-700 delay-200",
@@ -181,7 +181,7 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       
       {/* Our Values */}
       <section className="py-16 bg-blue-50">

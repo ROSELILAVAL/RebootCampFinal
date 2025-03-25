@@ -26,7 +26,7 @@ const faqItems: Record<string, FAQItem[]> = {
     },
     {
       question: "Comment sont composés les groupes ?",
-      answer: "Les groupes sont constitués de maximum 12 enfants, regroupés par tranche d'âge (7-9 ans, 10-12 ans, 13-15 ans, 16-18 ans). Cette organisation permet d'adapter le contenu pédagogique et la progression au niveau de chaque groupe."
+      answer: "Les groupes sont constitués de maximum 12 enfants, regroupés par tranche d'âge (6-9 ans, 10-12 ans, 13-15 ans, 16-18 ans). Cette organisation permet d'adapter le contenu pédagogique et la progression au niveau de chaque groupe."
     },
     {
       question: "Que se passe-t-il en cas d'absence ?",
@@ -52,7 +52,7 @@ const faqItems: Record<string, FAQItem[]> = {
     },
     {
       question: "How are the groups composed?",
-      answer: "The groups consist of a maximum of 12 children, grouped by age range (7-9 years, 10-12 years, 13-15 years, 16-18 years). This organization allows us to adapt the educational content and progression to the level of each group."
+      answer: "The groups consist of a maximum of 12 children, grouped by age range (6-9 years, 10-12 years, 13-15 years, 16-18 years). This organization allows us to adapt the educational content and progression to the level of each group."
     },
     {
       question: "What happens in case of absence?",
@@ -78,7 +78,7 @@ const faqItems: Record<string, FAQItem[]> = {
     },
     {
       question: "¿Cómo se componen los grupos?",
-      answer: "Los grupos constan de un máximo de 12 niños, agrupados por rango de edad (7-9 años, 10-12 años, 13-15 años, 16-18 años). Esta organización nos permite adaptar el contenido educativo y la progresión al nivel de cada grupo."
+      answer: "Los grupos constan de un máximo de 12 niños, agrupados por rango de edad (6-9 años, 10-12 años, 13-15 años, 16-18 años). Esta organización nos permite adaptar el contenido educativo y la progresión al nivel de cada grupo."
     },
     {
       question: "¿Qué ocurre en caso de ausencia?",

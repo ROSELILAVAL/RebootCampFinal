@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Header from '@/components/Header';
-import HeroSection from '@/components/TopLanding';
+import TopLanding from '@/components/TopLanding';
 import FeatureSection from '@/components/FeatureSection';
 import CampsPreview from '@/components/CampsPreview';
 import FAQ from '@/components/FAQ';
@@ -14,7 +14,7 @@ const Landing = () => {
       <Header />
       
       <main className="flex-grow pt-4">
-        <HeroSection />
+        <TopLanding />
         <FeatureSection />
         <CampsPreview />
         <FAQ />

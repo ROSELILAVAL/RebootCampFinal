@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Language } from '@/i18n';
 import { useTranslation } from '@/i18n/translations';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { calendarEvents } from '@/data/calendarEvents';
 import { format } from 'date-fns';
 import { fr, enUS, es } from 'date-fns/locale';
@@ -90,7 +90,6 @@ const CampCard: React.FC<CampCardProps> = ({ camp, className, language, style })
               alt={t[camp.title]}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
             <Button 
               variant="ghost" 
               size="icon" 
@@ -180,7 +179,7 @@ const CampCard: React.FC<CampCardProps> = ({ camp, className, language, style })
                   </div>
                 ) : (
                   <div className="border border-gray-200 rounded-lg p-8 text-center text-gray-500 italic">
-                    {t.noStagesFound}
+                    {t.noStageYet}
                   </div>
                 )}
               </div>
@@ -189,11 +188,19 @@ const CampCard: React.FC<CampCardProps> = ({ camp, className, language, style })
           
           <div className="p-6 pt-0 flex justify-end">
             <Button asChild variant="outline" onClick={() => setShowDetailsDialog(false)}>
+              <Link to="/contact">
+                {t.contact}
+              </Link>
+            </Button>
+          </div>
+          
+          {/* <div className="p-6 pt-0 flex justify-end">
+            <Button asChild variant="outline" onClick={() => setShowDetailsDialog(false)}>
               <Link to="/calendrier">
                 {t.calendar}
               </Link>
             </Button>
-          </div>
+          </div> */}
         </DialogContent>
       </Dialog>
     </>

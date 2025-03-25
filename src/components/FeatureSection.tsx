@@ -38,23 +38,23 @@ const FeatureSection: React.FC<FeatureSectionProps> = ({ language: langProp }) =
 
   const features = [
     {
-      title: t.programming,
-      description: t.programming,
+      title: t.feature1Title,
+      description: t.feature1Description,
       icon: <Users className="h-6 w-6 sm:h-8 sm:w-8 text-reboot-blue" />
     },
     {
-      title: t.camps,
-      description: t.camps,
+      title: t.feature2Title,
+      description: t.feature2Description,
       icon: <Code className="h-6 w-6 sm:h-8 sm:w-8 text-reboot-blue" />
     },
     {
-      title: t.calendar,
-      description: t.calendar,
+      title: t.feature3Title,
+      description: t.feature3Description,
       icon: <Gamepad2 className="h-6 w-6 sm:h-8 sm:w-8 text-reboot-blue" />
     },
     {
-      title: t.contact,
-      description: t.contact,
+      title: t.feature4Title,
+      description: t.feature4Description,
       icon: <BookOpen className="h-6 w-6 sm:h-8 sm:w-8 text-reboot-blue" />
     }
   ];
@@ -67,7 +67,7 @@ const FeatureSection: React.FC<FeatureSectionProps> = ({ language: langProp }) =
     >
       <div className="container px-4 sm:px-6">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-balance bg-gradient-to-br from-reboot-blue via-purple-600 to-reboot-coral bg-clip-text text-transparent">
-          {t.faqTitle}
+          {t.featureTitle}
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 lg:gap-12">

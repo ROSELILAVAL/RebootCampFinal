@@ -5,7 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { format, addMonths, subMonths, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, getDay, addDays, isSameWeek, startOfWeek } from 'date-fns';
+import { format, addMonths, subMonths, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, getDay } from 'date-fns';
 import { fr, enUS, es } from 'date-fns/locale';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useLanguageStore, Language } from '@/i18n';
@@ -49,14 +49,14 @@ const FloatingDots = () => {
 
 const Calendrier = () => {
   const { language } = useLanguageStore();
+  const t = useTranslation(language);
+  const locale = language === 'fr' ? fr : language === 'es' ? es : enUS;
+  
   const [currentDate, setCurrentDate] = useState(new Date());
   const [events, setEvents] = useState(calendarEvents);
   const [isVisible, setIsVisible] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<typeof calendarEvents[0] | null>(null);
   const [showEventDialog, setShowEventDialog] = useState(false);
-  
-  const t = useTranslation(language);
-  const locale = language === 'fr' ? fr : language === 'es' ? es : enUS;
   
   // Animation on mount
   useEffect(() => {
@@ -249,7 +249,7 @@ const Calendrier = () => {
                     }
                   </div>
                 ) : (
-                  <p className="text-gray-500 text-center py-4">{t.noStagesFound}</p>
+                  <p className="text-gray-500 text-center py-4">{t.noStageYet}</p>
                 )}
               </div>
             </div>

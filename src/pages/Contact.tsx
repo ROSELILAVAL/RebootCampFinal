@@ -28,10 +28,29 @@ const Contact = () => {
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  const sendEmail = async (subject, textContent) => {
+
+    const message = {
+      "subject":subject,
+      "textPart": textContent,
+    }
+
+    const res = await fetch("https://jeremy-maisse.com/api/rebootcamp-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(message),
+    });
+  
+    console.log(res)
+  };
   
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    
+    const fullSubject = subject + " from " + name + " ( " + email  + " ) ";
+    sendEmail(fullSubject, message);
     
     // Simulate form submission
     setTimeout(() => {
