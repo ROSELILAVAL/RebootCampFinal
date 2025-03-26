@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Twitter, Mail, MapPin, Phone } from 'lucide-react';
@@ -6,24 +5,17 @@ import { useLanguageStore, Language } from '@/i18n';
 import { useTranslation } from '@/i18n/translations';
 import RobotMascot from './RobotMascot';
 
-type FooterProps = {
-  language?: Language;
-};
-
-const Footer: React.FC<FooterProps> = ({ language: langProp }) => {
-  const { language: langStore } = useLanguageStore();
-  const language = langProp || langStore;
+const Footer = () => {
+  const { language } = useLanguageStore();
   const t = useTranslation(language);
 
   return (
     <footer className="bg-gray-900 text-gray-300 pt-16 pb-8">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-
-
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-12">
 
           {/* Contact */}
-          <div>
+          <div className="text-center mx-auto md:text-left md:mx-0 ml-auto">
             <h3 className="text-white font-semibold text-lg mb-4">{t.contactUs}</h3>
             <ul className="space-y-3">
               <li className="flex items-start">
@@ -43,18 +35,15 @@ const Footer: React.FC<FooterProps> = ({ language: langProp }) => {
             </ul>
           </div>
 
-
-          {/* Robot Mascot (replacing Camps) */}
-          <div className="flex flex-col items-center justify-center">
+          {/* Robot Mascot (visible only on screens wider than 766px) */}
+          <div className="hidden md:flex flex-col items-center justify-center">
             <div className="animate-spin-slow relative h-40 w-40">
               <RobotMascot className="absolute inset-0" isBouncing={false} />
             </div>
           </div>
 
-
-
           {/* Company Info */}
-          <div className="text-right ml-auto">
+          <div className="text-center mx-auto md:text-right md:mx-0 ml-auto">
             <h3 className="text-white font-semibold text-lg mb-4">{t.company}</h3>
             <ul className="space-y-2">
               <li><Link to="/" className="hover:text-white transition-colors">{t.home}</Link></li>

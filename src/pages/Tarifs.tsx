@@ -75,7 +75,7 @@ const Tarifs: React.FC = () => {
                 "relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 card-hover border-2 border-blue-100 group",
                 isVisible ? "animate-slide-in-left" : "opacity-0"
               )}
-              style={{ animationDelay: '0.1s' }}
+              style={{ maxWidth:'97%', marginBottom: '10px', animationDelay: '0.1s' }}
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-blue-100 rounded-bl-full z-0" />
               
@@ -129,7 +129,7 @@ const Tarifs: React.FC = () => {
                 "relative bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 card-hover scale-105 border-2 border-reboot-yellow transform -translate-y-4 group",
                 isVisible ? "animate-slide-in-left" : "opacity-0"
               )}
-              style={{ animationDelay: '0.2s' }}
+              style={{ maxWidth:'97%', marginBottom: '10px', animationDelay: '0.2s' }}
             >
               <div className="absolute -top-6 -right-6 w-24 h-24 bg-reboot-yellow/30 rounded-full z-0" />
               <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-reboot-blue/20 rounded-full z-0" />
@@ -192,7 +192,7 @@ const Tarifs: React.FC = () => {
                 "relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 card-hover border-2 border-purple-200 group",
                 isVisible ? "animate-slide-in-left" : "opacity-0"
               )}
-              style={{ animationDelay: '0.3s' }}
+              style={{ maxWidth:'99%', marginBottom: '10px',animationDelay: '0.3s' }}
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-purple-100 rounded-bl-full z-0" />
               

@@ -186,7 +186,8 @@ const CampsPreview: React.FC = () => {
           {camps.map((camp, index) => (
             <div 
               key={camp.id}
-              className="min-w-[85%] sm:min-w-[45%] md:min-w-[32%] lg:min-w-[30%] flex-shrink-0 snap-start md:snap-center"
+              className="min-w-[85%] sm:min-w-[45%] md:min-w-[32%] lg:min-w-[30%] max-w-[99%] flex-shrink-0 snap-start md:snap-center
+"
             >
               <CampCard 
                 camp={camp} 

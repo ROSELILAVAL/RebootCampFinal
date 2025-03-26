@@ -82,7 +82,7 @@ const CampCard: React.FC<CampCardProps> = ({ camp, className, language, style })
 
       {/* Camp Details Dialog */}
       <Dialog open={showDetailsDialog} onOpenChange={setShowDetailsDialog}>
-        <DialogContent className="max-w-4xl p-0 overflow-hidden">
+        <DialogContent className="max-w-4xl p-0 overflow-y-auto overflow-x-hidden" style={{maxWidth: '96%', maxHeight: '96%', borderRadius: '0.75rem'}}>
           <div className="h-60 overflow-hidden relative">
             <img 
               src={camp.image} 

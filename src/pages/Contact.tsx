@@ -251,7 +251,7 @@ const Contact = () => {
                     </div>
                   </div>
                   
-                  <div>
+                  {/* <div>
                     <h3 className="font-medium text-gray-900 mb-3">{t.followUs}</h3>
                     <div className="flex space-x-4">
                       <a
@@ -276,7 +276,7 @@ const Contact = () => {
                         <Twitter className="h-5 w-5" />
                       </a>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

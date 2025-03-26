@@ -11,6 +11,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { useLanguageStore, Language } from '@/i18n';
 import { useTranslation } from '@/i18n/translations';
 import { calendarEvents } from '@/data/calendarEvents';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 // Floating Dots Background Component
 const FloatingDots = () => {
@@ -51,9 +52,9 @@ const Calendrier = () => {
   const { language } = useLanguageStore();
   const t = useTranslation(language);
   const locale = language === 'fr' ? fr : language === 'es' ? es : enUS;
-  
+  const isMobile = useIsMobile();
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [events, setEvents] = useState(calendarEvents);
+  const [events] = useState(calendarEvents);
   const [isVisible, setIsVisible] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<typeof calendarEvents[0] | null>(null);
   const [showEventDialog, setShowEventDialog] = useState(false);
@@ -124,15 +125,15 @@ const Calendrier = () => {
       <Header />
       
       <main className="flex-grow pt-16">
-        <section className="py-12 bg-gradient-to-b from-indigo-500/20 via-purple-500/10 to-white relative">
+        <section className="py-8 md:py-12 bg-gradient-to-b from-indigo-500/20 via-purple-500/10 to-white relative">
           <FloatingDots />
-          <div className="container max-w-6xl relative z-10">
+          <div className="container max-w-6xl relative z-10 px-4 md:px-6">
             <div className={cn(
-              "text-center mb-12 transition-all duration-700",
+              "text-center mb-8 md:mb-12 transition-all duration-700",
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             )}>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-reboot-dark">{t.calendarTitle}</h1>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">{t.calendarSubtitle}</p>
+              <h1 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4 text-reboot-dark">{t.calendarTitle}</h1>
+              <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">{t.calendarSubtitle}</p>
             </div>
             
             <div className={cn(
@@ -140,12 +141,12 @@ const Calendrier = () => {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             )}>
               {/* Calendar header */}
-              <div className="flex items-center justify-between p-4 border-b">
+              <div className="flex items-center justify-between p-3 md:p-4 border-b">
                 <Button variant="ghost" size="icon" onClick={prevMonth}>
                   <ChevronLeft className="h-5 w-5" />
                 </Button>
                 
-                <h2 className="text-xl font-semibold">
+                <h2 className="text-lg md:text-xl font-semibold">
                   {format(currentDate, 'MMMM yyyy', { locale })}
                 </h2>
                 
@@ -155,7 +156,7 @@ const Calendrier = () => {
               </div>
               
               {/* Calendar grid */}
-              <div className="p-4">
+              <div className="p-2 md:p-4">
                 {/* Day names */}
                 <div className="grid grid-cols-7 mb-2">
                   {/* Use locale-specific day names */}
@@ -166,8 +167,8 @@ const Calendrier = () => {
                       ? ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
                       : ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
                     return (
-                      <div key={index} className="text-center text-sm font-medium text-gray-500 py-2">
-                        {dayNames[index]}
+                      <div key={index} className="text-center text-xs md:text-sm font-medium text-gray-500 py-1 md:py-2">
+                        {isMobile ? dayNames[index].charAt(0) : dayNames[index]}
                       </div>
                     );
                   })}
@@ -177,7 +178,7 @@ const Calendrier = () => {
                 <div className="grid grid-cols-7 gap-1">
                   {/* Empty cells for days before the start of the month */}
                   {Array.from({ length: startDay }).map((_, index) => (
-                    <div key={`empty-start-${index}`} className="aspect-square p-1" />
+                    <div key={`empty-start-${index}`} className="aspect-square p-0.5 md:p-1" />
                   ))}
                   
                   {/* Actual month days */}
@@ -189,18 +190,37 @@ const Calendrier = () => {
                       <div 
                         key={index} 
                         className={cn(
-                          "aspect-square p-1 relative rounded-md transition-all hover:bg-gray-50",
+                          "aspect-square p-0.5 md:p-1 relative rounded-md transition-all hover:bg-gray-50",
                           hasEvents && "font-semibold"
                         )}
                       >
                         <div className="h-full flex flex-col">
-                          <span className="text-sm text-right p-1">
+                          <span className="text-xs md:text-sm text-right p-0.5 md:p-1">
                             {format(day, 'd')}
                           </span>
                           
                           {hasEvents && (
-                            <div className="flex-1 flex flex-col gap-1 overflow-hidden">
-                              {dayEvents.map(event => (
+                            <div className="flex-1 flex flex-col gap-0.5 md:gap-1 overflow-hidden">
+                            {isMobile ? (
+                              // On mobile, just show colored dots for events
+                              <div className="flex flex-wrap gap-0.5 mt-0.5">
+                                {dayEvents.slice(0, 3).map(event => (
+                                  <div 
+                                    key={event.id}
+                                    className="w-1.5 h-1.5 rounded-full bg-reboot-blue"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleEventClick(event);
+                                    }}
+                                  />
+                                ))}
+                                {dayEvents.length > 3 && (
+                                  <div className="w-1.5 h-1.5 rounded-full bg-gray-400" />
+                                )}
+                              </div>
+                            ) : (
+                              // On desktop, show event names
+                              dayEvents.map(event => (
                                 <Button 
                                   key={event.id}
                                   variant="ghost" 
@@ -209,7 +229,8 @@ const Calendrier = () => {
                                 >
                                   {event.title}
                                 </Button>
-                              ))}
+                              ))
+                            )}
                             </div>
                           )}
                         </div>
@@ -220,7 +241,7 @@ const Calendrier = () => {
               </div>
               
               {/* Upcoming events list */}
-              <div className="border-t p-4">
+              <div className="border-t p-3 md:p-4">
                 <h3 className="font-semibold mb-3">{format(currentDate, 'MMMM yyyy', { locale })} - {t.seeAllCamps}</h3>
                 
                 {currentMonthEvents.length > 0 ? (
@@ -233,14 +254,14 @@ const Calendrier = () => {
                           className="p-3 rounded-md border border-gray-100 hover:border-reboot-blue/30 transition-colors cursor-pointer"
                           onClick={() => handleEventClick(event)}
                         >
-                          <div className="flex justify-between items-center">
+                          <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2">
                             <div>
                               <p className="font-medium">{event.title}</p>
-                              <p className="text-sm text-gray-500">
-                                {format(event.date, 'EEEE d MMMM', { locale })} - {format(event.endDate, 'EEEE d MMMM yyyy', { locale })}
+                              <p className="text-xs md:text-sm text-gray-500">
+                                {format(event.date,isMobile ? 'd MMM' : 'EEEE d MMMM', { locale })} - {format(event.endDate,  isMobile ? 'd MMM yyyy' :'EEEE d MMMM yyyy', { locale })}
                               </p>
                             </div>
-                            <Button variant="outline" size="sm">
+                            <Button variant="outline" size="sm" className="mt-1 md:mt-0 w-full md:w-auto">
                               {t.seeAvailability}
                             </Button>
                           </div>
@@ -260,8 +281,8 @@ const Calendrier = () => {
       {/* Event Dialog */}
       {selectedEvent && (
         <Dialog open={showEventDialog} onOpenChange={setShowEventDialog}>
-          <DialogContent className="sm:max-w-[550px] p-0 overflow-hidden">
-            <div className="h-48 overflow-hidden relative">
+          <DialogContent className="sm:max-w-[550px] p-0 overflow-hidden max-w-[95vw] mx-auto">
+            <div className="h-36 md:h-48 overflow-hidden relative">
               <img 
                 src={selectedEvent.image} 
                 alt={selectedEvent.title}
@@ -276,68 +297,68 @@ const Calendrier = () => {
                 <X className="h-4 w-4" />
               </Button>
             </div>
-            <div className="p-6">
+            <div className="p-4 md:p-6">
               <DialogHeader>
-                <DialogTitle className="text-2xl">{selectedEvent.title}</DialogTitle>
-                <div className="flex items-center text-gray-500 mt-2">
-                  <CalendarIcon className="h-4 w-4 mr-2" />
-                  <span>
-                    {format(selectedEvent.date, 'EEEE d MMMM', { locale })} - {format(selectedEvent.endDate, 'EEEE d MMMM yyyy', { locale })}
+                <DialogTitle className="text-xl md:text-2xl">{selectedEvent.title}</DialogTitle>
+                <div className="flex items-center text-gray-500 mt-2 text-sm md:text-base">
+                  <CalendarIcon className="h-4 w-4 mr-2 flex-shrink-0" />
+                  <span className="line-clamp-2">
+                  {format(selectedEvent.date, isMobile ? 'd MMM' : 'EEEE d MMMM', { locale })} - {format(selectedEvent.endDate, isMobile ? 'd MMM yyyy' : 'EEEE d MMMM yyyy', { locale })}
                   </span>
                 </div>
               </DialogHeader>
               
               <div className="mt-4">
-                <p className="text-gray-700 mb-4">{selectedEvent.description}</p>
+                <p className="text-gray-700 mb-4 text-sm md:text-base">{selectedEvent.description}</p>
                 
-                <h4 className="font-semibold text-lg mb-3">{t.seeAvailability}</h4>
+                <h4 className="font-semibold text-md md:text-lg mb-3">{t.seeAvailability}</h4>
                 <div className="space-y-2">
                   <div className={cn(
-                    "p-3 rounded-md border flex justify-between items-center",
+                    "p-2 md:p-3 rounded-md border flex justify-between items-center",
                     selectedEvent.morningAvailable 
                       ? "border-green-200 bg-green-50" 
                       : "border-gray-200 bg-gray-50 opacity-50"
                   )}>
                     <div className="flex items-center">
-                      <Clock className="h-4 w-4 mr-2" />
-                      <span>{t.morning_9_12}</span>
+                      <Clock className="h-4 w-4 mr-2 flex-shrink-0" />
+                      <span className="text-sm md:text-base">{t.morning_9_12}</span>
                     </div>
                     {selectedEvent.morningAvailable && (
-                      <Button size="sm" variant="outline">
+                      <Button size="sm" variant="outline" className="text-xs md:text-sm">
                         {t.registerNow}
                       </Button>
                     )}
                   </div>
                   
                   <div className={cn(
-                    "p-3 rounded-md border flex justify-between items-center",
+                    "p-2 md:p-3 rounded-md border flex justify-between items-center",
                     selectedEvent.afternoonAvailable 
                       ? "border-green-200 bg-green-50" 
                       : "border-gray-200 bg-gray-50 opacity-50"
                   )}>
                     <div className="flex items-center">
-                      <Clock className="h-4 w-4 mr-2" />
-                      <span>{t.afternoon_14_17}</span>
+                      <Clock className="h-4 w-4 mr-2 flex-shrink-0" />
+                      <span className="text-sm md:text-base">{t.afternoon_14_17}</span>
                     </div>
                     {selectedEvent.afternoonAvailable && (
-                      <Button size="sm" variant="outline">
+                      <Button size="sm" variant="outline" className="text-xs md:text-sm">
                         {t.registerNow}
                       </Button>
                     )}
                   </div>
                   
                   <div className={cn(
-                    "p-3 rounded-md border flex justify-between items-center",
+                    "p-2 md:p-3 rounded-md border flex justify-between items-center",
                     selectedEvent.fullDayAvailable 
                       ? "border-green-200 bg-green-50" 
                       : "border-gray-200 bg-gray-50 opacity-50"
                   )}>
                     <div className="flex items-center">
-                      <Clock className="h-4 w-4 mr-2" />
-                      <span>{t.fullDay_9_17}</span>
+                      <Clock className="h-4 w-4 mr-2 flex-shrink-0" />
+                      <span className="text-sm md:text-base">{t.fullDay_9_17}</span>
                     </div>
                     {selectedEvent.fullDayAvailable && (
-                      <Button size="sm" variant="outline">
+                      <Button size="sm" variant="outline" className="text-xs md:text-sm">
                         {t.registerNow}
                       </Button>
                     )}
@@ -355,7 +376,7 @@ const Calendrier = () => {
         </Dialog>
       )}
       
-      <Footer />
+      <Footer/>
     </div>
   );
 };

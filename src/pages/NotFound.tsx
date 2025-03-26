@@ -50,7 +50,7 @@ const NotFound = () => {
         </div>
       </main>
       
-      <Footer language="fr" />
+      <Footer/>
     </div>
   );
 };
