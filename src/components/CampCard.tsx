@@ -28,7 +28,6 @@ const CampCard: React.FC<CampCardProps> = ({ camp, className, language, style })
   const campEvents = calendarEvents.filter(event => event.campId === camp.id);
 
   const handleViewCamp = (e: React.MouseEvent) => {
-    console.log("hey")
     e.preventDefault();
     setShowDetailsDialog(true);
   };

@@ -32,7 +32,7 @@ const Footer: React.FC<FooterProps> = ({ language: langProp }) => {
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-2 text-gray-400" />
-                <span>+33 1 23 45 67 89</span>
+                <span>+33 6 04 48 08 16</span>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-2 text-gray-400" />
@@ -70,7 +70,7 @@ const Footer: React.FC<FooterProps> = ({ language: langProp }) => {
           <div className="text-sm mb-4 md:mb-0">
             {t.copyright}
           </div>
-          <div className="flex space-x-4">
+          {/* <div className="flex space-x-4">
             <a href="#" className="text-gray-400 hover:text-white transition-colors">
               <Facebook className="h-5 w-5" />
               <span className="sr-only">Facebook</span>
@@ -83,7 +83,7 @@ const Footer: React.FC<FooterProps> = ({ language: langProp }) => {
               <Twitter className="h-5 w-5" />
               <span className="sr-only">Twitter</span>
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

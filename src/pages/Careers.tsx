@@ -76,7 +76,7 @@ const Careers = () => {
                     </div>
                     <p className="text-gray-600 mb-4">{t["careerJob"+ i + "Description"]}</p>
                   </div>
-                  <Button className="mt-4 md:mt-0 whitespace-nowrap">{t.careerApplyNow}</Button>
+                  {/* <Button className="mt-4 md:mt-0 whitespace-nowrap">{t.careerApplyNow}</Button> */}
                 </div>
                 
                 <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">

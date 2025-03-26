@@ -41,8 +41,6 @@ const Contact = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(message),
     });
-  
-    console.log(res)
   };
   
   const handleSubmit = (e: FormEvent) => {
@@ -237,7 +235,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-medium text-gray-900">{t.phone}</h3>
-                      <p className="text-gray-600 mt-1">+33 1 23 45 67 89</p>
+                      <p className="text-gray-600 mt-1">+33 6 04 48 08 16</p>
                     </div>
                   </div>
                   
