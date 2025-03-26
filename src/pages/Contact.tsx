@@ -36,7 +36,7 @@ const Contact = () => {
       "textPart": textContent,
     }
 
-    const res = await fetch("https://jeremy-maisse.com/api/rebootcamp-email", {
+    const res = await fetch("https://www.jeremy-maisse.com/api/rebootcamp-email", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(message),
