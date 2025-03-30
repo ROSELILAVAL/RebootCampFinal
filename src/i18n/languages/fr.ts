@@ -262,6 +262,8 @@ const fr: TranslationKeys = {
     campflStudioDescription: "Création de musique et de sons à l'aide du logiciel FL studio",
     campBureautiqueTitle: "bureautique",
     campBureautiqueDescription: "Venez apprendre à vous servir d'un ordinateur",
+    campPythonTitle:"Python",
+    campPythonDescription:"Démarrez votre apprentissage, ou améliorez vous en python!",
 
     notFoundMessage: "Oops! Cette page a disparu dans le cyberespace.",
     returnToHome: "Retour à l'accueil",

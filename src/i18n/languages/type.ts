@@ -259,6 +259,8 @@ export type TranslationKeys = {
     campflStudioDescription:string;
     campBureautiqueTitle:string;
     campBureautiqueDescription:string;
+    campPythonTitle:string;
+    campPythonDescription:string;
 
     notFoundMessage:string;
     returnToHome:string;

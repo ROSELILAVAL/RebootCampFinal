@@ -56,16 +56,15 @@ const Calendrier = () => {
     return calendarEvents.filter(event => {
       // Check if the day is within the event's date range (inclusive of both start and end dates)
       const isWithinRange = 
-        (day >= event.date && day <= addDays(event.date, event.duration)) || 
+        (day >= event.date && day <= addDays(event.date, event.duration - 1)) || 
         isSameDay(day, event.date) ||
-        isSameDay(day,  addDays(event.date, event.duration));
+        isSameDay(day,  addDays(event.date, event.duration - 1));
         
       return isWithinRange;
     });
   };
   
-  // Get day of week index for the first day of the month (0 = Sunday, 1 = Monday, etc.)
-  const startDay = getDay(monthStart);
+  const startDay = (getDay(monthStart) + 6) % 7;
 
   // Handle event click
   const handleEventClick = (event: typeof calendarEvents[0]) => {
@@ -131,10 +130,10 @@ const Calendrier = () => {
                   {/* Use locale-specific day names */}
                   {Array.from({ length: 7 }).map((_, index) => {
                     const dayNames = language === 'fr' 
-                      ? ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam']
+                      ? ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
                       : language === 'es'
-                      ? ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb']
-                      : ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                      ? ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom']
+                      : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
                     return (
                       <div key={index} className="text-center text-xs md:text-sm font-medium text-gray-500 py-1 md:py-2">
                         {isMobile ? dayNames[index].charAt(0) : dayNames[index]}
@@ -227,7 +226,7 @@ const Calendrier = () => {
                             <div>
                               <p className="font-medium">{t[event.camp.title]}</p>
                               <p className="text-xs md:text-sm text-gray-500">
-                                {format(event.date,isMobile ? 'd MMM' : 'EEEE d MMMM', { locale })} - {format(addDays(event.date, event.duration),  isMobile ? 'd MMM yyyy' :'EEEE d MMMM yyyy', { locale })}
+                                {format(event.date,isMobile ? 'd MMM' : 'EEEE d MMMM', { locale })} - {format(addDays(event.date, event.duration - 1),  isMobile ? 'd MMM yyyy' :'EEEE d MMMM yyyy', { locale })}
                               </p>
                             </div>
                             <Button variant="outline" size="sm" className="mt-1 md:mt-0 w-full md:w-auto">
@@ -272,7 +271,7 @@ const Calendrier = () => {
                 <div className="flex items-center text-gray-500 mt-2 text-sm md:text-base">
                   <CalendarIcon className="h-4 w-4 mr-2 flex-shrink-0" />
                   <span className="line-clamp-2">
-                  {format(selectedEvent.date, isMobile ? 'd MMM' : 'EEEE d MMMM', { locale })} - {format(addDays(selectedEvent.date, selectedEvent.duration), isMobile ? 'd MMM yyyy' : 'EEEE d MMMM yyyy', { locale })}
+                  {format(selectedEvent.date, isMobile ? 'd MMM' : 'EEEE d MMMM', { locale })} - {format(addDays(selectedEvent.date, selectedEvent.duration - 1), isMobile ? 'd MMM yyyy' : 'EEEE d MMMM yyyy', { locale })}
                   </span>
                 </div>
               </DialogHeader>

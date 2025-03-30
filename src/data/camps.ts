@@ -9,6 +9,7 @@ import montage from "./assets/campAssets/montage.jpg";
 import Personnage from "./assets/campAssets/Personnage.jpg";
 import Scratch from "./assets/campAssets/Scratch.jpg";
 import Lovable from "./assets/campAssets/lovable.jpg";
+import Python from "./assets/campAssets/python.jpg";
 
 export type Camp = {
   id: number;
@@ -137,5 +138,14 @@ export const camps: Camp[] = [
       maxStudents: 12,
       ageMin: 6,
       ageMax: 9
+    },
+    {
+      id: 13,
+      title: "campPythonTitle",
+      description: "campPythonDescription",
+      image: Python,
+      maxStudents: 12,
+      ageMin: 12,
+      ageMax: 18
     },
   ];

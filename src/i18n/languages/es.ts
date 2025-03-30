@@ -266,6 +266,8 @@ const es: TranslationKeys = {
     campflStudioDescription: "Crea música y sonidos utilizando el software FL Studio", 
     campBureautiqueTitle:"Ofimática",
     campBureautiqueDescription:"Ven a aprender a usar una computadora.",
+    campPythonTitle: "Python",
+    campPythonDescription: "¡Empieza tu aprendizaje o mejora tus habilidades en Python!",
 
     notFoundMessage:"Ups ! Esta página ha desaparecido en el ciberespacio.",
     returnToHome:"Volver al inicio",

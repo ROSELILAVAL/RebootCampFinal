@@ -44,7 +44,7 @@ const Tarifs: React.FC = () => {
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-blue-50">
       <Header />
       
-      <main className="flex-grow pt-32">
+      <main className="flex-grow ">
         <section ref={sectionRef} className="container section-padding">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="mb-4 inline-block relative">
