@@ -30,7 +30,7 @@ const faqItems: Record<string, FAQItem[]> = {
     },
     {
       question: "Que se passe-t-il en cas d'absence ?",
-      answer: "En cas d'absence, nous essayons de proposer une solution de rattrapage si possible. Pour les absences communiquées au moins 7 jours à l'avance, nous proposons un report sur un autre stage (sous réserve de disponibilité) ou un remboursement partiel."
+      answer: "En cas d'absence, nous essayons de proposer une solution de rattrapage si possible. Pour les absences communiquées au moins 7 jours à l'avance, nous proposons un report sur un autre stage (sous réserve de disponibilité)."
     },
     {
       question: "Les stages sont-ils bilingues ?",
@@ -56,7 +56,7 @@ const faqItems: Record<string, FAQItem[]> = {
     },
     {
       question: "What happens in case of absence?",
-      answer: "In case of absence, we try to offer a catch-up solution if possible. For absences communicated at least 7 days in advance, we offer a transfer to another camp (subject to availability) or a partial refund."
+      answer: "In case of absence, we try to offer a catch-up solution if possible. For absences communicated at least 7 days in advance, we offer a transfer to another camp (subject to availability)."
     },
     {
       question: "Are the camps bilingual?",
@@ -82,7 +82,7 @@ const faqItems: Record<string, FAQItem[]> = {
     },
     {
       question: "¿Qué ocurre en caso de ausencia?",
-      answer: "En caso de ausencia, intentamos ofrecer una solución de recuperación si es posible. Para ausencias comunicadas con al menos 7 días de antelación, ofrecemos una transferencia a otro campamento (sujeto a disponibilidad) o un reembolso parcial."
+      answer: "En caso de ausencia, intentamos ofrecer una solución de recuperación si es posible. Para ausencias comunicadas con al menos 7 días de antelación, ofrecemos una transferencia a otro campamento (sujeto a disponibilidad)."
     },
     {
       question: "¿Son bilingües los campamentos?",

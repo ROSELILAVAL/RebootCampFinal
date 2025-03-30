@@ -122,7 +122,6 @@ const CampCard: React.FC<CampCardProps> = ({ camp, className, language, style })
                     <li>{t.materials}</li>
                     <li>{t.smallGroups}</li>
                     <li>{t.certificate}</li>
-                    <li>{t.snacks}</li>
                   </ul>
                 </div>
               </div>

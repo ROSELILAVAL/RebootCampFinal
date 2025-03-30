@@ -70,7 +70,6 @@ const es: TranslationKeys = {
     materials: "Todos los materiales necesarios",
     smallGroups: "Grupos pequeños (máx. 10 estudiantes)",
     certificate: "Certificado de participación",
-    snacks: "Refrigerios y bebidas",
     availableDates: "Fechas disponibles",
     seeAvailability: "Ver disponibilidad",
     morning_9_12: "Mañana (9h-12h)",

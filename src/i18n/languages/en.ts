@@ -66,7 +66,6 @@ const en: TranslationKeys = {
     materials: "All necessary materials",
     smallGroups: "Small groups (max 10 students)",
     certificate: "Participation certificate",
-    snacks: "Snacks and drinks",
     availableDates: "Available dates",
     seeAvailability: "Check availability",
     morning_9_12: "Morning (9am-12pm)",

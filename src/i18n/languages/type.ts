@@ -64,7 +64,6 @@ export type TranslationKeys = {
     materials: string;
     smallGroups: string;
     certificate: string;
-    snacks: string;
     availableDates: string;
     seeAvailability: string;
     morning_9_12: string;
