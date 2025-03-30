@@ -5,57 +5,26 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { format, addMonths, subMonths, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, getDay } from 'date-fns';
+import { format, addMonths, subMonths, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, getDay, addDays } from 'date-fns';
 import { fr, enUS, es } from 'date-fns/locale';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { useLanguageStore, Language } from '@/i18n';
+import { useLanguageStore } from '@/i18n';
 import { useTranslation } from '@/i18n/translations';
 import { calendarEvents } from '@/data/calendarEvents';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { FloatingDots } from '@/components/FloatingDots';
+import { Link } from 'react-router-dom';
 
-// Floating Dots Background Component
-const FloatingDots = () => {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {Array.from({ length: 50 }).map((_, i) => {
-        const size = 4 + Math.random() * 4;
-        const animationDuration = 15 + Math.random() * 20;
-        const left = Math.random() * 100;
-        const animationDelay = Math.random() * -30;
-        const opacity = 0.3 + Math.random() * 0.7;
-        const color = [
-          'bg-blue-400', 'bg-purple-400', 'bg-green-400', 
-          'bg-yellow-400', 'bg-pink-400', 'bg-indigo-400'
-        ][Math.floor(Math.random() * 6)];
-        
-        return (
-          <div 
-            key={i}
-            className={`absolute rounded-full ${color}`}
-            style={{
-              width: `${size}px`,
-              height: `${size}px`,
-              left: `${left}%`,
-              bottom: `-${size}px`,
-              opacity: opacity,
-              animation: `float ${animationDuration}s infinite linear`,
-              animationDelay: `${animationDelay}s`
-            }}
-          />
-        );
-      })}
-    </div>
-  );
-};
 
 const Calendrier = () => {
   const { language } = useLanguageStore();
   const t = useTranslation(language);
   const locale = language === 'fr' ? fr : language === 'es' ? es : enUS;
-  const isMobile = useIsMobile();
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [events] = useState(calendarEvents);
+
+  const isMobile = useIsMobile();
   const [isVisible, setIsVisible] = useState(false);
+
   const [selectedEvent, setSelectedEvent] = useState<typeof calendarEvents[0] | null>(null);
   const [showEventDialog, setShowEventDialog] = useState(false);
   
@@ -78,18 +47,18 @@ const Calendrier = () => {
   const monthDays = eachDayOfInterval({ start: monthStart, end: monthEnd });
   
   // Get events for the current month
-  const currentMonthEvents = events.filter(event => 
+  const currentMonthEvents = calendarEvents.filter(event => 
     isSameMonth(event.date, currentDate)
   );
   
-  // Function to get events for a specific day
+  // Function to get calendarEvents for a specific day
   const getEventsForDay = (day: Date) => {
-    return events.filter(event => {
+    return calendarEvents.filter(event => {
       // Check if the day is within the event's date range (inclusive of both start and end dates)
       const isWithinRange = 
-        (day >= event.date && day <= event.endDate) || 
+        (day >= event.date && day <= addDays(event.date, event.duration)) || 
         isSameDay(day, event.date) ||
-        isSameDay(day, event.endDate);
+        isSameDay(day,  addDays(event.date, event.duration));
         
       return isWithinRange;
     });
@@ -204,9 +173,9 @@ const Calendrier = () => {
                             {isMobile ? (
                               // On mobile, just show colored dots for events
                               <div className="flex flex-wrap gap-0.5 mt-0.5">
-                                {dayEvents.slice(0, 3).map(event => (
+                                {dayEvents.slice(0, 3).map((event, k) => (
                                   <div 
-                                    key={event.id}
+                                    key={k}
                                     className="w-1.5 h-1.5 rounded-full bg-reboot-blue"
                                     onClick={(e) => {
                                       e.stopPropagation();
@@ -220,14 +189,14 @@ const Calendrier = () => {
                               </div>
                             ) : (
                               // On desktop, show event names
-                              dayEvents.map(event => (
+                              dayEvents.map((event, k) => (
                                 <Button 
-                                  key={event.id}
+                                  key={k}
                                   variant="ghost" 
                                   className="h-auto py-1 px-1 text-xs justify-start truncate bg-reboot-blue/10 hover:bg-reboot-blue/20 text-reboot-blue"
                                   onClick={() => handleEventClick(event)}
                                 >
-                                  {event.title}
+                                  {t[event.camp.title]}
                                 </Button>
                               ))
                             )}
@@ -248,17 +217,17 @@ const Calendrier = () => {
                   <div className="space-y-2">
                     {currentMonthEvents
                       .sort((a, b) => a.date.getTime() - b.date.getTime())
-                      .map(event => (
+                      .map((event, k) => (
                         <div 
-                          key={event.id} 
+                          key={k} 
                           className="p-3 rounded-md border border-gray-100 hover:border-reboot-blue/30 transition-colors cursor-pointer"
                           onClick={() => handleEventClick(event)}
                         >
                           <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2">
                             <div>
-                              <p className="font-medium">{event.title}</p>
+                              <p className="font-medium">{t[event.camp.title]}</p>
                               <p className="text-xs md:text-sm text-gray-500">
-                                {format(event.date,isMobile ? 'd MMM' : 'EEEE d MMMM', { locale })} - {format(event.endDate,  isMobile ? 'd MMM yyyy' :'EEEE d MMMM yyyy', { locale })}
+                                {format(event.date,isMobile ? 'd MMM' : 'EEEE d MMMM', { locale })} - {format(addDays(event.date, event.duration),  isMobile ? 'd MMM yyyy' :'EEEE d MMMM yyyy', { locale })}
                               </p>
                             </div>
                             <Button variant="outline" size="sm" className="mt-1 md:mt-0 w-full md:w-auto">
@@ -284,8 +253,8 @@ const Calendrier = () => {
           <DialogContent className="sm:max-w-[550px] p-0 overflow-hidden max-w-[95vw] mx-auto">
             <div className="h-36 md:h-48 overflow-hidden relative">
               <img 
-                src={selectedEvent.image} 
-                alt={selectedEvent.title}
+                src={selectedEvent.camp.image} 
+                alt={t[selectedEvent.camp.title]}
                 className="w-full h-full object-cover"
               />
               <Button 
@@ -299,17 +268,17 @@ const Calendrier = () => {
             </div>
             <div className="p-4 md:p-6">
               <DialogHeader>
-                <DialogTitle className="text-xl md:text-2xl">{selectedEvent.title}</DialogTitle>
+                <DialogTitle className="text-xl md:text-2xl">{t[selectedEvent.camp.title]}</DialogTitle>
                 <div className="flex items-center text-gray-500 mt-2 text-sm md:text-base">
                   <CalendarIcon className="h-4 w-4 mr-2 flex-shrink-0" />
                   <span className="line-clamp-2">
-                  {format(selectedEvent.date, isMobile ? 'd MMM' : 'EEEE d MMMM', { locale })} - {format(selectedEvent.endDate, isMobile ? 'd MMM yyyy' : 'EEEE d MMMM yyyy', { locale })}
+                  {format(selectedEvent.date, isMobile ? 'd MMM' : 'EEEE d MMMM', { locale })} - {format(addDays(selectedEvent.date, selectedEvent.duration), isMobile ? 'd MMM yyyy' : 'EEEE d MMMM yyyy', { locale })}
                   </span>
                 </div>
               </DialogHeader>
               
               <div className="mt-4">
-                <p className="text-gray-700 mb-4 text-sm md:text-base">{selectedEvent.description}</p>
+                <p className="text-gray-700 mb-4 text-sm md:text-base">{t[selectedEvent.camp.description]}</p>
                 
                 <h4 className="font-semibold text-md md:text-lg mb-3">{t.seeAvailability}</h4>
                 <div className="space-y-2">
@@ -325,7 +294,9 @@ const Calendrier = () => {
                     </div>
                     {selectedEvent.morningAvailable && (
                       <Button size="sm" variant="outline" className="text-xs md:text-sm">
-                        {t.registerNow}
+                        <Link to="/tarifs">
+                          {t.registerNow}
+                        </Link>
                       </Button>
                     )}
                   </div>
@@ -342,7 +313,9 @@ const Calendrier = () => {
                     </div>
                     {selectedEvent.afternoonAvailable && (
                       <Button size="sm" variant="outline" className="text-xs md:text-sm">
-                        {t.registerNow}
+                        <Link to="/tarifs">
+                          {t.registerNow}
+                        </Link>
                       </Button>
                     )}
                   </div>
@@ -359,7 +332,9 @@ const Calendrier = () => {
                     </div>
                     {selectedEvent.fullDayAvailable && (
                       <Button size="sm" variant="outline" className="text-xs md:text-sm">
-                        {t.registerNow}
+                        <Link to="/tarifs">
+                          {t.registerNow}
+                        </Link>
                       </Button>
                     )}
                   </div>

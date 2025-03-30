@@ -60,7 +60,7 @@ const en: TranslationKeys = {
     careers: "Careers",
     legal: "Legal",
     ageRange: "Age",
-    duration: "Duration",
+    nextEvent: "Dates",
     maxStudents: "Students",
     included: "What's included",
     materials: "All necessary materials",
@@ -77,7 +77,7 @@ const en: TranslationKeys = {
     next: "Next",
     calendarTitle: "Camps Calendar",
     calendarSubtitle: "Check upcoming dates for our camps and book your spot",
-    registerNow: "Register",
+    registerNow: "Prices",
     closeModal: "Close",
     
     
@@ -150,7 +150,7 @@ const en: TranslationKeys = {
     privateCourse: "Private course",
     priceLabel: "Price:",
     bookNowButton: "Book now",
-    years: "ans",
+    years: "years",
 
 
     careersTitle: "Join Our Team",
@@ -236,6 +236,8 @@ const en: TranslationKeys = {
 
     discoverCamps: "Discover our camps",
     seeAllCamps: "See all camps",
+    campSiteWebTitle: "Low-Code Website",
+    campSiteWebDescription: "Learn to create a website with very little code!",
     campMinecraftTitle: "Minecraft Education",
     campMinecraftDescription: "Learn the basics of algorithms with Minecraft",
     campIABaseTitle: "Introduction to AI",
@@ -263,6 +265,29 @@ const en: TranslationKeys = {
 
     notFoundMessage:"Oops! This page has disappeared into cyberspace.",
     returnToHome:"Back to the homepage",
+
+    paymentTitle: "Payment",
+    paymentSubtitle: "Just one more step!",
+    paymentSuccess: "Your payment was successful",
+    paymentRedirect: "paymentRedirect",
+    paymentInformation: "Payment Information",
+    paymentOrderSummary: "Order Summary",
+    paymentAvailability: "Valid for 3 months",
+    paymentPrice: "Price",
+    paymentDiscount: "Discount",
+    paymentTax: "Taxes",
+    paymentTotal: "Total",
+    paymentSecurePayment: "Secure Payment",
+    paymentIncompleteCardDetails: "Incomplete information",
+    paymentNameRequired: "Name is required",
+    paymentEmailRequired: "Email is required",
+    paymentPaymentProcessed: "Processing payment...",
+    paymentPaymentAmount: "Payment amount:",
+    paymentGenericPaymentError: "An error occurred",
+    paymentFullName: "Full Name",
+    paymentCardDetails: "Card Details",
+    paymentProcessing: "Processing payment...",
+    paymentPayNow: "Pay Now",
 
     tarifPageTitle: "Our pricing",
     tarifPageSubTitle: "Options tailored to all needs and schedules",

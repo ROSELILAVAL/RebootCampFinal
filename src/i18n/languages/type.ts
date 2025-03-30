@@ -58,7 +58,7 @@ export type TranslationKeys = {
     careers: string;
     legal: string;
     ageRange: string;
-    duration: string;
+    nextEvent: string;
     maxStudents: string;
     included: string;
     materials: string;
@@ -233,6 +233,8 @@ export type TranslationKeys = {
 
     discoverCamps: string;
     seeAllCamps: string;
+    campSiteWebTitle:string;
+    campSiteWebDescription:string;
     campMinecraftTitle:string;
     campMinecraftDescription:string;
     campIABaseTitle:string;
@@ -260,6 +262,29 @@ export type TranslationKeys = {
 
     notFoundMessage:string;
     returnToHome:string;
+
+    paymentTitle: string;
+    paymentSubtitle: string;
+    paymentSuccess: string;
+    paymentRedirect: string;
+    paymentInformation: string;
+    paymentOrderSummary: string;
+    paymentAvailability: string;
+    paymentPrice: string;
+    paymentDiscount: string;
+    paymentTax: string;
+    paymentTotal: string;
+    paymentSecurePayment: string;
+    paymentIncompleteCardDetails: string;
+    paymentNameRequired: string;
+    paymentEmailRequired: string;
+    paymentPaymentProcessed: string;
+    paymentPaymentAmount: string;
+    paymentGenericPaymentError: string;
+    paymentFullName: string;
+    paymentCardDetails: string;
+    paymentProcessing: string;
+    paymentPayNow: string;
 
     tarifPageTitle: string;
     tarifPageSubTitle: string;

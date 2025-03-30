@@ -8,6 +8,7 @@ import LegoRobot from "./assets/campAssets/LegoRobot.jpg";
 import montage from "./assets/campAssets/montage.jpg";
 import Personnage from "./assets/campAssets/Personnage.jpg";
 import Scratch from "./assets/campAssets/Scratch.jpg";
+import Lovable from "./assets/campAssets/lovable.jpg";
 
 export type Camp = {
   id: number;
@@ -16,17 +17,24 @@ export type Camp = {
   ageMax: number;
   description: string;
   image: string;
-  duration: number;
   maxStudents: number;
 };
 
 export const camps: Camp[] = [
     {
+      id: 0,
+      title: "campSiteWebTitle",
+      description: "campSiteWebDescription",
+      image: Lovable,
+      maxStudents: 12,
+      ageMin: 13,
+      ageMax: 18
+    },
+    {
       id: 1,
       title: "campMinecraftTitle",
       description: "campMinecraftDescription",
       image: Minecraft,
-      duration: 5,
       maxStudents: 12,
       ageMin: 7,
       ageMax: 14
@@ -36,7 +44,6 @@ export const camps: Camp[] = [
       title: "campIABaseTitle",
       description: "campIABaseDescription",
       image: IA,
-      duration: 5,
       maxStudents: 12,
       ageMin: 7,
       ageMax: 14
@@ -46,7 +53,6 @@ export const camps: Camp[] = [
       title: "campDigitalArtTitle",
       description: "campDigitalArtDescription",
       image: DigitalArt,
-      duration: 5,
       maxStudents: 12,
       ageMin: 12,
       ageMax: 18
@@ -56,7 +62,6 @@ export const camps: Camp[] = [
       title: "campScratchMovieTitle",
       description: "campScratchMovieDescription",
       image: Scratch,
-      duration: 5,
       maxStudents: 12,
       ageMin: 7,
       ageMax: 14
@@ -66,7 +71,6 @@ export const camps: Camp[] = [
       title: "campScratchVideoGameTitle",
       description: "campScratchVideoGameDescription",
       image: Scratch,
-      duration: 5,
       maxStudents: 12,
       ageMin: 7,
       ageMax: 14
@@ -76,7 +80,6 @@ export const camps: Camp[] = [
       title: "campTiktokTitle",
       description: "campTiktokDescription",
       image: montage,
-      duration: 5,
       maxStudents: 12,
       ageMin: 7,
       ageMax: 12
@@ -86,7 +89,6 @@ export const camps: Camp[] = [
       title: "campLegoRobotTitle",
       description: "campLegoRobotDescription",
       image: LegoRobot,
-      duration: 5,
       maxStudents: 12,
       ageMin: 7,
       ageMax: 10
@@ -96,7 +98,6 @@ export const camps: Camp[] = [
       title: "campLapinCretinTitle",
       description: "campLapinCretinDescription",
       image: LapinCretin,
-      duration: 5,
       maxStudents: 12,
       ageMin: 7,
       ageMax: 10
@@ -106,7 +107,6 @@ export const camps: Camp[] = [
       title: "campIAToolTitle",
       description: "campIAToolDescription",
       image: IA,
-      duration: 5,
       maxStudents: 12,
       ageMin: 13,
       ageMax: 18
@@ -116,7 +116,6 @@ export const camps: Camp[] = [
       title: "campAnimatedCharacterTitle",
       description: "campAnimatedCharacterDescription",
       image: Personnage,
-      duration: 5,
       maxStudents: 12,
       ageMin: 12,
       ageMax: 18
@@ -126,7 +125,6 @@ export const camps: Camp[] = [
       title: "campflStudioTitle",
       description: "campflStudioDescription",
       image: flstudio,
-      duration: 5,
       maxStudents: 12,
       ageMin: 13,
       ageMax: 18
@@ -136,7 +134,6 @@ export const camps: Camp[] = [
       title: "campBureautiqueTitle",
       description: "campBureautiqueDescription",
       image: Bureautique,
-      duration: 5,
       maxStudents: 12,
       ageMin: 6,
       ageMax: 9

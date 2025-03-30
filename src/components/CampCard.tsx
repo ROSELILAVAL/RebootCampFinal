@@ -8,7 +8,7 @@ import { Language } from '@/i18n';
 import { useTranslation } from '@/i18n/translations';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { calendarEvents } from '@/data/calendarEvents';
-import { format } from 'date-fns';
+import { addDays, format } from 'date-fns';
 import { fr, enUS, es } from 'date-fns/locale';
 import { Camp } from '@/data/camps';
 
@@ -25,7 +25,7 @@ const CampCard: React.FC<CampCardProps> = ({ camp, className, language, style })
   const locale = language === 'fr' ? fr : language === 'es' ? es : enUS;
 
   // Find all calendar events for this camp
-  const campEvents = calendarEvents.filter(event => event.campId === camp.id);
+  const campEvents = calendarEvents.filter(event => event.camp.id === camp.id);
 
   const handleViewCamp = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -64,8 +64,8 @@ const CampCard: React.FC<CampCardProps> = ({ camp, className, language, style })
             </div>
             <div className="flex flex-col items-center p-2 bg-gray-50 rounded-md">
               <Clock className="h-4 w-4 mb-1" />
-              <span>{camp.duration}</span>
-              <span className="text-xs text-gray-400">{t.duration}</span>
+              <span>{campEvents.length}</span>
+              <span className="text-xs text-gray-400">{t.nextEvent}</span>
             </div>
             <div className="flex flex-col items-center p-2 bg-gray-50 rounded-md">
               <Users className="h-4 w-4 mb-1" />
@@ -104,9 +104,6 @@ const CampCard: React.FC<CampCardProps> = ({ camp, className, language, style })
                   {camp.ageMin + " - " + camp.ageMax + " " + t.years}
                 </div>
                 <div className="bg-white/20 px-3 py-1 rounded-full text-sm text-white backdrop-blur-sm">
-                  {camp.duration}
-                </div>
-                <div className="bg-white/20 px-3 py-1 rounded-full text-sm text-white backdrop-blur-sm">
                   Max: {camp.maxStudents} {t.maxStudents}
                 </div>
               </div>
@@ -134,16 +131,16 @@ const CampCard: React.FC<CampCardProps> = ({ camp, className, language, style })
                 <h3 className="text-xl font-semibold mb-4">{t.availableDates}</h3>
                 {campEvents.length > 0 ? (
                   <div className="space-y-3 max-h-72 overflow-y-auto pr-2">
-                    {campEvents.map(event => (
+                    {campEvents.map((event,k) => (
                       <div 
-                        key={event.id}
+                        key={k}
                         className="border border-gray-100 rounded-lg p-4 hover:border-reboot-blue/30 transition-colors"
                       >
                         <div className="flex justify-between items-start">
                           <div>
                             <h5 className="font-medium">{format(event.date, 'MMMM yyyy', { locale })}</h5>
                             <p className="text-sm text-gray-500">
-                              {format(event.date, 'EEEE d', { locale })} - {format(event.endDate, 'EEEE d', { locale })}
+                              {format(event.date, 'EEEE d', { locale })} - {format(addDays(event.date, event.duration), 'EEEE d', { locale })}
                             </p>
                           </div>
                           <Button asChild size="sm" variant="outline">

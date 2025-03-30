@@ -16,6 +16,7 @@ import Legal from "./pages/Legal";
 import NotFound from "./pages/NotFound";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import { useLanguageStore, getLanguageFromBrowser } from "./i18n";
+import Paiement from "./pages/Paiement";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -56,6 +57,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/legal" element={<Legal />} />
+          <Route path="/paiement" element={<Paiement />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <ScrollToTopButton />
