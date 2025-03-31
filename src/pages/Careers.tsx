@@ -173,7 +173,7 @@ const Careers = () => {
             {t.careerOpenPositionsSubtitle}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="mailto:careers@rebootcamp.fr" className="flex items-center text-reboot-blue hover:text-reboot-dark transition-colors">
+            <a href="mailto:contact@rebootcamp.fr" className="flex items-center text-reboot-blue hover:text-reboot-dark transition-colors">
               <Mail className="mr-2 h-5 w-5" />
               contact@rebootcamp.fr
             </a>
